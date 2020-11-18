@@ -22,17 +22,19 @@ const TicketForm = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <label>Title</label>
+      <label for="title">Title</label>
       <input
         type="text"
+        id="title"
         name="title"
         placeholder="Title"
         onChange={handleChange}
         value={ticket.title}
       />
-      <label>Description</label>
+      <label for="description">Description</label>
       <input
         type="text"
+        id="description"
         name="description"
         placeholder="Description"
         onChange={handleChange}
