@@ -1,1 +1,4 @@
-# bug-tracker
+# Bug Tracker
+
+## Technologies used:
+- React
