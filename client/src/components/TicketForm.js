@@ -9,6 +9,10 @@ const TicketForm = () => {
   const handleSubmit = event => {
     event.preventDefault();
     console.log("handleSubmit", ticket);
+    setTicket({
+      title: '',
+      description: ''
+    });
   };
 
   const handleChange = event => {
