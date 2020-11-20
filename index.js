@@ -4,10 +4,12 @@ const cors = require('cors');
 const morgan = require('morgan');
 const helmet = require('helmet');
 
-
 // Create Express server and port
 const app = express();
 const port = process.env.PORT || 1337;
+
+// DB model
+const Tickets = require('./data/tickets-model.js');
 
 // Middleware
 app.use(helmet());
@@ -23,6 +25,29 @@ app.get('/', (req, res) => {
   });
 });
 
+app.get('/tickets', (req, res) => {
+  // Get a list of tickets
+  Tickets.find().then(tickets => {
+    res.status(200).json(tickets);
+  }).catch(error => {
+    console.log(error);
+    res.status(500).json({ message: 'Error retrieving tickets' });
+  });
+});
+
+app.post('/tickets', (req, res) => {
+  // Create a new ticket
+  const newTicket = req.body;
+
+  Tickets.add(newTicket).then(ticket => {
+    res.status(201).json(ticket);
+  }).catch(error => {
+    console.log(error);
+    res.status(500).json({ message: 'Error creating new ticket' });
+  });
+});
+
+// Bring the server to life
 app.listen(port, () => {
   console.log(`.: Listening at http://localhost:${port} :.`);
 });
