@@ -47,6 +47,16 @@ app.post('/tickets', (req, res) => {
   });
 });
 
+app.delete('/tickets/:id', (req, res) => {
+  Tickets.remove(req.params.id)
+    .then(() => {
+        res.status(200).json({ message: `Ticket ${req.params.id} was deleted.` });
+      })
+    .catch(() => {
+      res.status(500).json({ errorMessage: `Ticket ${req.params.id} could not be removed` });
+    });
+});
+
 // Bring the server to life
 app.listen(port, () => {
   console.log(`.: Listening at http://localhost:${port} :.`);
