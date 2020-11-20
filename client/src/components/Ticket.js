@@ -10,7 +10,13 @@ const Ticket = props => {
   return (
     <>
       <h1>Submit a Ticket</h1>
-      <TicketForm />
+      <TicketForm addTicket={props.addTicket} />
+      <button onClick={props.getTickets}>View all tickets</button>
+      {props.tickets && !props.isFetching && props.tickets.map(tickets => (
+        <div key={tickets.id}>
+          {JSON.stringify(tickets)}
+        </div>
+      ))}
     </>
   );
 };

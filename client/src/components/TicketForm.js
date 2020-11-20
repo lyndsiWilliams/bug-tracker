@@ -1,7 +1,8 @@
 // Package imports
 import { useState } from 'react';
 
-const TicketForm = () => {
+const TicketForm = props => {
+  console.log("Props in TicketForm", props)
   const [ticket, setTicket] = useState({
     title: '',
     description: ''
@@ -9,7 +10,7 @@ const TicketForm = () => {
 
   const handleSubmit = event => {
     event.preventDefault();
-    console.log("handleSubmit", ticket);
+    props.addTicket(ticket);
     setTicket({
       title: '',
       description: ''
