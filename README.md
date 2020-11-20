@@ -7,3 +7,6 @@ An app to track bugs on a project.
 
 ## Technologies used:
 - React
+- NodeJS
+- Express
+- Knex
