@@ -22,7 +22,7 @@ const TicketForm = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <label for="title">Title</label>
+      <label htmlFor="title">Title</label>
       <input
         type="text"
         id="title"
@@ -31,7 +31,7 @@ const TicketForm = () => {
         onChange={handleChange}
         value={ticket.title}
       />
-      <label for="description">Description</label>
+      <label htmlFor="description">Description</label>
       <input
         type="text"
         id="description"
