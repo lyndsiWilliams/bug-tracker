@@ -16,11 +16,9 @@ export const getTickets = () => {
     dispatch({ type: FETCH_TICKETS_START });
     axios.get("http://localhost:1337/tickets")
       .then(response => {
-        console.log("GET REQUEST: ", response)
         dispatch({ type: FETCH_TICKETS_SUCCESS, payload: response.data })
       })
       .catch(error => {
-        console.log(error);
         dispatch({ type: FETCH_TICKETS_FAILURE, payload: error });
       });
   };
@@ -30,7 +28,6 @@ export const addTicket = newTicket => dispatch => {
   dispatch({ type: ADD_TICKET_START });
   axios.post("http://localhost:1337/tickets", newTicket)
     .then(response => {
-      console.log("POST REQUEST: ", response);
       dispatch({ type: ADD_TICKET_SUCCESS, payload: response.data });
     })
     .catch(error => {

@@ -5,12 +5,11 @@ import { getTickets, addTicket } from '../actions';
 import TicketForm from './TicketForm';
 
 const Ticket = props => {
-  console.log("Props in Ticket", props)
 
   return (
     <>
       <h1>Submit a Ticket</h1>
-      <TicketForm addTicket={props.addTicket} />
+      <TicketForm addTicket={props.addTicket} getTickets={props.getTickets} />
       <button onClick={props.getTickets}>View all tickets</button>
       {props.tickets && !props.isFetching && props.tickets.map(tickets => (
         <div key={tickets.id}>
