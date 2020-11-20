@@ -9,6 +9,8 @@ export const FETCH_TICKETS_FAILURE = "FETCH_TICKETS_FAILURE";
 export const ADD_TICKET_START = "ADD_TICKET_START";
 export const ADD_TICKET_SUCCESS = "ADD_TICKET_SUCCESS";
 export const ADD_TICKET_FAILURE = "ADD_TICKET_FAILURE";
+// DELETE
+export const DELETE_TICKET = "DELETE_TICKET";
 
 
 export const getTickets = () => {
@@ -34,3 +36,10 @@ export const addTicket = newTicket => dispatch => {
       dispatch({ type: ADD_TICKET_FAILURE, payload: error });
     });
 };
+
+export const deleteTicket = id => dispatch => {
+  dispatch({ type: DELETE_TICKET, payload: id });
+  axios.delete(`http://localhost:1337/tickets/${id}`)
+    .then(response => console.log(response))
+    .catch(error => console.log(error));
+}

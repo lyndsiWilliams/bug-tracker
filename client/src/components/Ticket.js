@@ -1,10 +1,14 @@
 // Redux
 import { connect } from 'react-redux';
-import { getTickets, addTicket } from '../actions';
+import { getTickets, addTicket, deleteTicket } from '../actions';
 // Component
 import TicketForm from './TicketForm';
 
 const Ticket = props => {
+
+  const handleDelete = id => {
+    props.deleteTicket(id);
+  }
 
   return (
     <>
@@ -14,7 +18,7 @@ const Ticket = props => {
       {props.tickets && !props.isFetching && props.tickets.map(tickets => (
         <div key={tickets.id}>
           {JSON.stringify(tickets)}
-          <button>X</button>
+          <button onClick={() => props.deleteTicket(tickets.id)}>X</button>
         </div>
       ))}
     </>
@@ -29,5 +33,5 @@ const mapStateToProps = state => ({
 
 export default connect (
   mapStateToProps,
-  { getTickets, addTicket }
+  { getTickets, addTicket, deleteTicket }
 )(Ticket);
