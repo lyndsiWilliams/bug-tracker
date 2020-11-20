@@ -14,6 +14,7 @@ const Ticket = props => {
       {props.tickets && !props.isFetching && props.tickets.map(tickets => (
         <div key={tickets.id}>
           {JSON.stringify(tickets)}
+          <button>X</button>
         </div>
       ))}
     </>
