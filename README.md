@@ -10,3 +10,6 @@ An app to track bugs on a project.
 - NodeJS
 - Express
 - Knex
+
+## Planning
+- https://trello.com/b/hukPbJk7/bug-tracker
